@@ -10,7 +10,7 @@ class Student(models.Model):
 	registered_date = models.DateField(auto_now = False, auto_now_add = True)
 	last_update = models.DateField(auto_now = True, auto_now_add = False)
 	
-	def _str_(self):
+	def __str__(self):
 	   return self.full_name
 
 class Classrooms(models.Model):
@@ -21,7 +21,7 @@ class Classrooms(models.Model):
 	created_at = models.DateField(auto_now = False, auto_now_add = True)
 	updated_at = models.DateField(auto_now = True, auto_now_add = False)
 
-	def _str_(self):
+	def __str__(self):
 		return self.name
 
 		
