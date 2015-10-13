@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import StudentForm
 from .forms import FeedbackForm
+from .models import Student
 from django.core.mail import send_mail
 # Create your views here.
 
@@ -26,6 +27,7 @@ def index(request):
 		}
 	
 	return render(request, 'index.html', context)
+
 def feedback(request):
 	form = FeedbackForm(request.POST or None)
 	if form.is_valid():
@@ -40,3 +42,9 @@ def feedback(request):
 	   "form" : form
 	}
 	return render(request, 'feedback.html', context)
+
+
+def students(request):
+    students = Student.objects.all()
+    context = {'students':students}
+    return render(request, 'students.html', context);
