@@ -7,12 +7,16 @@ from django.core.mail import send_mail
 # Create your views here.
 
 def index(request):
-	form = StudentForm(request.POST or None)
-	context = {
-	   "hello_message" : "Register new student",
-	   "form" : form
+	context = {}
+	return render(request, 'home.html', context)
 
-	}
+def register(request):
+	form = StudentForm(request.POST or None)
+
+	context = {
+			"hello_message": "Register new student",
+			"form":form
+		}
 
 	if form.is_valid():
 		instance = form.save(commit = False)
@@ -23,9 +27,8 @@ def index(request):
 		instance.save()
 
 		context = {
-			"hello_message": "Student saved"
+			"hello_message": "student saved"
 		}
-	
 	return render(request, 'index.html', context)
 
 def feedback(request):
@@ -45,11 +48,11 @@ def feedback(request):
 
 
 def students(request):
-    # search_term = request.GET['search']
-    search_term = request.GET.get('search', default='')
-    students = Student.objects.all().order_by('-last_update').filter(full_name__contains = search_term)
-    context = {'students':students}
-    return render(request, 'students.html', context);
+	# search_term = request.GET['search']
+	search_term = request.GET.get('search', default='')
+	students = Student.objects.all().order_by('-last_update').filter(full_name__contains = search_term)
+	context = {'students':students}
+	return render(request, 'students.html', context);
 
 def blog(request):
 	context = {}
