@@ -122,3 +122,5 @@ ACCOUNT_ACTIVATION_DAYS = 7   # One-week activation window;
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 LOGIN_REDIRECT_URL = '/students'
 SITE_ID = 1
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

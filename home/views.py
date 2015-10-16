@@ -50,3 +50,11 @@ def students(request):
     students = Student.objects.all().order_by('-last_update').filter(full_name__contains = search_term)
     context = {'students':students}
     return render(request, 'students.html', context);
+
+def blog(request):
+	context = {}
+	return render(request, 'blog.html', context);
+
+def carousel(request):
+	context = {}
+	return render(request, 'carousel.html', context);
